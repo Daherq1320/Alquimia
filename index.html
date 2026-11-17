@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datos de Transferencia y Contacto</title>
+  <style>
+    :root {
+      /* Cambia estos colores para personalizar la tarjeta de cada cliente */
+      --color-primario: #1b4332;
+      --color-acento: #2d6a4f;
+      --color-fondo: #f4f6f5;
+      --color-tarjeta: #ffffff;
+      --color-texto: #1f2937;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--color-fondo); color: var(--color-texto); display: flex; justify-content: center; padding: 16px; }
+    
+    .tarjeta {
+      background: var(--color-tarjeta);
+      width: 100%;
+      max-width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      overflow: hidden;
+      text-align: center;
+      padding-bottom: 24px;
+    }
+
+    .encabezado {
+      background: linear-gradient(135deg, var(--color-primario), var(--color-acento));
+      color: white;
+      padding: 28px 20px 24px;
+    }
+
+    .logo {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      background: white;
+      object-fit: cover;
+      border: 3px solid rgba(255,255,255,0.4);
+      margin-bottom: 12px;
+    }
+
+    .encabezado h1 { font-size: 1.35rem; font-weight: 700; margin-bottom: 4px; }
+    .encabezado p { font-size: 0.9rem; opacity: 0.9; }
+
+    .seccion { padding: 20px 20px 0; text-align: left; }
+    .titulo-seccion { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.8px; color: #6b7280; font-weight: 700; margin-bottom: 10px; }
+
+    .caja-banco {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .fila-dato { margin-bottom: 10px; }
+    .fila-dato:last-child { margin-bottom: 0; }
+    .etiqueta { font-size: 0.78rem; color: #6b7280; display: block; }
+    .valor { font-size: 1rem; font-weight: 600; color: #111827; word-break: break-all; }
+    .clabe-num { font-family: monospace; font-size: 1.12rem; letter-spacing: 0.5px; color: var(--color-primario); }
+
+    .btn-copiar {
+      width: 100%;
+      margin-top: 8px;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background-color: var(--color-primario);
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+    .btn-copiar:active { transform: scale(0.98); }
+    .btn-copiar.copiado { background-color: #059669; }
+
+    .btn-secundario {
+      background-color: #e5e7eb;
+      color: #1f2937;
+    }
+
+    .redes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn-red {
+      text-decoration: none;
+      padding: 11px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      color: white;
+    }
+    .wa { background-color: #25D366; }
+    .ig { background-color: #E1306C; }
+    .fb { background-color: #1877F2; }
+    .maps { background-color: #EA4335; }
+
+    .pie { margin-top: 22px; font-size: 0.75rem; color: #9ca3af; }
+  </style>
+</head>
+<body>
+
+  <div class="tarjeta">
+    <!-- ENCABEZADO DEL NEGOCIO -->
+    <div class="encabezado">
+      <!-- Reemplaza el enlace de src por la URL de tu logotipo o el nombre de tu archivo de imagen (ej. logo.png) -->
+      <img src="Alquimia ancestral.png" alt="Logo del negocio" class="logo">
+      <h1>Alquimia Ancestral</h1>
+      <p>Bebidas Artesanales y Productos Naturales</p>
+    </div>
+
+    <!-- SECCIÓN DE TRANSFERENCIA BANCARIA -->
+    <div class="seccion">
+      <div class="titulo-seccion">Datos para Transferencia SPEI</div>
+      
+      <div class="caja-banco">
+        <div class="fila-dato">
+          <span class="etiqueta">Banco / Institución</span>
+          <span class="valor">Mercado Pago W</span>
+        </div>
+        <div class="fila-dato">
+          <span class="etiqueta">Beneficiario</span>
+          <span class="valor">José Domingo David Herrera Quevedo</span>
+        </div>
+        <div class="fila-dato">
+          <span class="etiqueta">CLABE Interbancaria (18 dígitos)</span>
+          <span class="valor clabe-num" id="texto-clabe">722969010289740024</span>
+        </div>
+        <button class="btn-copiar" id="btn-clabe" onclick="copiarTexto('texto-clabe', 'btn-clabe', '¡CLABE Copiada!')">
+          📋 Copiar CLABE
+        </button>
+      </div>
+
+      <!-- OPCIÓN DIMO / CELULAR (Opcional: borra este bloque si no lo usas) -->
+      <div class="caja-banco">
+        <div class="fila-dato">
+          <span class="etiqueta">Transferencia rápida por Dimo (Celular)</span>
+          <span class="valor clabe-num" id="texto-dimo">8116683506</span>
+        </div>
+        <button class="btn-copiar btn-secundario" id="btn-dimo" onclick="copiarTexto('texto-dimo', 'btn-dimo', '¡Número Copiado!')">
+          📱 Copiar Celular Dimo
+        </button>
+      </div>
+    </div>
+
+    <!-- SECCIÓN DE REDES SOCIALES Y RESEÑAS -->
+    <div class="seccion">
+      <div class="titulo-seccion">Conecta con nosotros</div>
+      <div class="redes">
+        <a href="https://wa.me/5218116683506" target="_blank" class="btn-red wa">WhatsApp</a>
+<a href="https://instagram.com/alquimia_ancestral1320" target="_blank" class="btn-red ig">Instagram</a>
+<a href="https://facebook.com/alquimiaancestral1320" target="_blank" class="btn-red fb">Facebook</a>
+
+        <a href="https://g.page/r/CVBASrJUIrjjEBM/review" target="_blank" class="btn-red maps">Califícanos ★</a>
+      </div>
+    </div>
+
+    <div class="pie">
+      Tarjeta Digital NFC • Sin comisiones
+    </div>
+  </div>
+
+  <script>
+    function copiarTexto(idElemento, idBoton, mensajeExito) {
+      const texto = document.getElementById(idElemento).innerText.trim();
+      navigator.clipboard.writeText(texto).then(() => {
+        const boton = document.getElementById(idBoton);
+        const textoOriginal = boton.innerHTML;
+        boton.innerHTML = "✅ " + mensajeExito;
+        boton.classList.add("copiado");
+        
+        setTimeout(() => {
+          boton.innerHTML = textoOriginal;
+          boton.classList.remove("copiado");
+        }, 2500);
+      }).catch(err => {
+        alert("No se pudo copiar automáticamente. Selecciona el número manualmente.");
+      });
+    }
+  </script>
+
+</body>
+</html>
